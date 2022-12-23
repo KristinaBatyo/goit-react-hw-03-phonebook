@@ -16,11 +16,18 @@ export class App extends Component {
       number,
       filter,
     }
+    const isExistContact = this.state.contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
+    );
+    if (isExistContact) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
     
 
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }))
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
   }
 
   setContacts = (contacts) => {
