@@ -1,6 +1,6 @@
-
-
 import { Component } from "react";
+import PropTypes from "prop-types";
+import {PhonebookContainer, PhonebookForm, PhonebookLabel, PhonebookInput, PhonebookButton, PhonebookTitle} from "./Phonebook.styled";
 
     export class Phonebook extends Component {
     state = {
@@ -25,12 +25,12 @@ import { Component } from "react";
 
     render() {
         return (
-        <>
-            <h1>Phonebook</h1>
-            <form onSubmit={this.handleSubmit}>
-            <label>
+        <PhonebookContainer>
+            <PhonebookTitle>Phonebook</PhonebookTitle>
+            <PhonebookForm onSubmit={this.handleSubmit}>
+            <PhonebookLabel>
                 Name:
-                <input
+                <PhonebookInput
                 type="text"
                 name="name"
                 value={this.state.name}
@@ -39,10 +39,10 @@ import { Component } from "react";
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 />
-            </label>
-            <label>
+            </PhonebookLabel>
+            <PhonebookLabel>
                 Number:
-                <input
+                <PhonebookInput
                 type="tel"
                 name="number"
                 value={this.state.number}
@@ -51,10 +51,14 @@ import { Component } from "react";
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
                 />
-            </label>
-            <button type="submit">Add contact</button>
-            </form>
-        </>
+            </PhonebookLabel>
+            <PhonebookButton type="submit">Add contact</PhonebookButton>
+            </PhonebookForm>
+        </PhonebookContainer>
         );
     }
     }
+
+    Phonebook.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    };

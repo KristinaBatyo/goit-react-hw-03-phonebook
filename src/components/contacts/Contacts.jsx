@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ContactsContainer, ContactsTitle, ContactsItem, ContactsButton, ContactsInput} from './Contacts.styled.jsx';
 
 
     export const Contacts = ({ contacts, setContacts }) => {
@@ -14,18 +15,18 @@ import React, { useState } from 'react';
             setContacts(contacts.filter(contact => contact.id !== contactId));
         };
         return (
-            <>
-                <h2>Contacts</h2>
-                <input type="text" name="filter" value={filter} onChange={handleChange} />
+            <ContactsContainer>
+                <ContactsTitle>Contacts</ContactsTitle>
+                <ContactsInput type="text" name="filter" value={filter} onChange={handleChange} />
                 <ul>
                     {visibleContacts.map(({ id, name, number, }) => (
-                        <li key={id}>
+                        <ContactsItem key={id}>
                             {name}: {number}
-                            <button type="button" onClick={() => onDeleteContact(id)}>Delete</button>
-                        </li>
+                            <ContactsButton type="button" onClick={() => onDeleteContact(id)}>Delete</ContactsButton>
+                        </ContactsItem>
                     ))}
                 </ul>
 
-            </>
+            </ContactsContainer>
         );
     }

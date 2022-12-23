@@ -2,6 +2,7 @@ import { Phonebook } from "components/phonebook/Phonebook";
 import { Contacts } from "components/contacts/Contacts";
 import { Component } from "react";
 import { nanoid } from "nanoid";
+import{AppContainer} from './App.styled';
 
 export class App extends Component {
   state = {
@@ -36,10 +37,10 @@ export class App extends Component {
 
   render() {
     return (
-      <>
+      <AppContainer>
         <Phonebook onSubmit={this.addContact} />
         <Contacts contacts={this.state.contacts} setContacts={this.setContacts} />
-      </>
+      </AppContainer>
     );
   }
 }
