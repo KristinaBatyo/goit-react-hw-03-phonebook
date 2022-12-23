@@ -7,15 +7,15 @@ import { nanoid } from "nanoid";
 export class App extends Component {
   state = {
     contacts: [],
-    name: '',
-    number: ''
+    filter: ''
   }
 
-  addContact = ({ name, number }) => {
+  addContact = ({ name, number, filter }) => {
     const contact = {
       id: nanoid(),
       name,
-      number
+      number,
+      filter,
     }
 
     this.setState(prevState => ({
@@ -32,3 +32,4 @@ export class App extends Component {
     );
   }
 }
+
