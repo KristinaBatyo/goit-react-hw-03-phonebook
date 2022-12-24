@@ -33,14 +33,32 @@ export class App extends Component {
 
   setContacts = (contacts) => {
     this.setState({ contacts });
+  };
+  
+  handleChange = e => {
+    this.setState({ filter: e.currentTarget.value });
+  };
+
+  onDeleteContact = (contactId) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   }
 
-  render() {
-    return (
-      <AppContainer>
-        <Phonebook onSubmit={this.addContact} />
-        <Contacts contacts={this.state.contacts} setContacts={this.setContacts} />
-      </AppContainer>
+render() {
+    const { contacts } = this.state;
+    const { filter } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter),
     );
-  }
+    return (
+        <AppContainer>
+        <Phonebook onSubmit={this.addContact} />
+        <Contacts contacts={visibleContacts} onDeleteContact={this.onDeleteContact} setFilter={this.handleChange} />
+        </AppContainer>
+    );
 }
+}
+
+
