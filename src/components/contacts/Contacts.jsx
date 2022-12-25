@@ -1,5 +1,5 @@
 import { ContactsContainer, ContactsTitle, ContactsItem, ContactsButton, ContactsInput} from './Contacts.styled.jsx';
-
+import PropTypes from "prop-types";
 
 export const Contacts = ({ contacts, onDeleteContact, setFilter }) => (
     <ContactsContainer>
@@ -17,4 +17,16 @@ export const Contacts = ({ contacts, onDeleteContact, setFilter }) => (
     </>
     </ContactsContainer>
 );
+
+Contacts.propTypes = {
+    contacts: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,
+        })
+    ),
+    onDeleteContact: PropTypes.func.isRequired,
+    setFilter: PropTypes.func.isRequired,
+};
 
