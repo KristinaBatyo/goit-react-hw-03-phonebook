@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ContactsContainer = styled.div`
+export const ContactsContainer = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,35 +10,21 @@ export const ContactsContainer = styled.div`
 `;
 
 
-export const ContactsTitle = styled.h2`
+export const ContactsLabel = styled.label`
+    display: flex;
+    flex-direction: column;
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 20px;
 `;
 
-export const ContactsList = styled.ul`
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-    margin-top: 20px;
-`;
 
-export const ContactsItem = styled.li`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #f5f5f5;
-    &:last-child {
-        border-bottom: none;
-    }
-`;
 
 export const ContactsButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px;
     width: 100px;
     height: 30px;
     margin-left: 20px;
@@ -58,8 +44,7 @@ export const ContactsButton = styled.button`
 `;
 
 export const ContactsInput = styled.input`
-width: 100%;
-max-width: 400px;
+width: 300px;
 padding: 5px;
 border: 1px solid #000;
 border-radius: 5px;
