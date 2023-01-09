@@ -10,7 +10,7 @@ import { PropTypes } from 'prop-types';
 
 export class App extends Component {
   state = {
-      contacts: [],
+    contacts: [],
     filter: "",
   }
 
@@ -52,6 +52,19 @@ export class App extends Component {
       contacts: prevState.contacts.filter(contact => contactId !== contact.id),
     }));
   };
+
+  componentDidMount() {
+    const contactsLocal = localStorage.getItem('contacts');
+    const parsetContacts = JSON.parse(contactsLocal);
+    if (parsetContacts) {
+      this.setState({contacts: parsetContacts})
+    }
+    
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
 
   render(){
    const {contacts} = this.state
