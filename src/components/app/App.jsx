@@ -27,7 +27,7 @@ export class App extends Component {
       contactName.push(contact.name);
     }
 
-    if (contactName.includes(contact.name)) {
+    if (contactName.includes(contact.name.toLowerCase())) {
       alert(`${contact.name} is already in contacts list`);
       return;
     }
@@ -62,8 +62,11 @@ export class App extends Component {
     
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  componentDidUpdate(_, prevState) {
+    const contacts = this.state;
+    if (contacts !== prevState.contacts) {
+      return localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    } 
   }
 
   render(){
